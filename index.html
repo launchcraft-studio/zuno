@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>ZUNO — Pizza in Riyadh</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app" aria-label="ZUNO">
+        <!-- Panel 1: Home -->
+        <section class="panel home active" id="home">
+            <div class="pizza-image" role="img" aria-label="Margherita pizza"></div>
+            <div class="brand-mark">ZUNO</div>
+            <div class="home-copy">
+                <p>PIZZA, MADE WITH SOUL</p>
+                <h1>A slice<br>of happiness.</h1>
+                <button class="text-button" type="button" onclick="showPanel(1)">Discover ZUNO <span>↗</span></button>
+            </div>
+            <div class="swipe-hint" aria-hidden="true">
+                <span class="swipe-line"></span>
+                <span>SWIPE TO SEE MORE</span>
+                <i class="fa-solid fa-arrow-down"></i>
+            </div>
+            <span class="counter">01 <i>/ 04</i></span>
+        </section>
+
+        <!-- Panel 2: Video -->
+        <section class="panel video-panel" id="video">
+            <div class="panel-header">
+                <p class="kicker">FRESH FROM THE OVEN</p>
+                <h2>Made to be<br>shared.</h2>
+            </div>
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata">
+                    <source src="food.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+            </div>
+            <span class="counter">02 <i>/ 04</i></span>
+        </section>
+
+        <!-- Panel 3: Contact -->
+        <section class="panel contact-panel" id="contact">
+            <div class="panel-header">
+                <p class="kicker">FIND YOUR ZUNO</p>
+                <h2>Riyadh.<br>Come hungry.</h2>
+            </div>
+            <div class="details">
+                <div class="detail-row">
+                    <span class="detail-label">LOCATION</span>
+                    <span class="detail-value">Riyadh, Saudi Arabia</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">OPENING HOURS</span>
+                    <span class="detail-value">Daily, 12 PM – 12 AM</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">DIRECT CONTACT</span>
+                    <span class="detail-value">hello@zuno.example</span>
+                </div>
+            </div>
+            <div class="contact-actions">
+                <a class="action-button" href="https://www.google.com/maps/search/pizza+restaurants+Riyadh/" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i> Explore Location
+                </a>
+                <a class="whatsapp-button" href="https://wa.me/966500000000" target="_blank" rel="noopener" aria-label="Contact ZUNO on WhatsApp">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Order
+                </a>
+            </div>
+            <span class="counter">03 <i>/ 04</i></span>
+        </section>
+
+        <!-- Panel 4: About -->
+        <section class="panel about-panel" id="about">
+            <div class="panel-header">
+                <p class="kicker">OUR STORY</p>
+                <h2>Simple food.<br>Good moments.</h2>
+            </div>
+            <div class="about-content">
+                <p class="story">ZUNO started with a simple idea: pizza brings people together. We use fresh dough and lots of toppings so every slice is easy to share. Made for Riyadh, ZUNO is all about good food, good company, and simple times.</p>
+                <p class="fictional">A fictional brand concept.</p>
+            </div>
+            <div class="about-actions">
+                <button class="text-button" type="button" onclick="showPanel(0)">Back to start <span>↗</span></button>
+            </div>
+            <span class="counter">04 <i>/ 04</i></span>
+        </section>
+
+        <!-- Slide Navigation Indicators -->
+        <nav class="slide-nav" aria-label="Slide navigation">
+            <button type="button" onclick="showPanel(0)" aria-label="Slide 1"></button>
+            <button type="button" onclick="showPanel(1)" aria-label="Slide 2"></button>
+            <button type="button" onclick="showPanel(2)" aria-label="Slide 3"></button>
+            <button type="button" onclick="showPanel(3)" aria-label="Slide 4"></button>
+        </nav>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>

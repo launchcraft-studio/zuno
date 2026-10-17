@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #080808;
+    --surface-color: #121212;
+    --white: #ffffff;
+    --text-muted: #a0a0a0;
+    --red: #e62e2e;
+    --red-hover: #ff3b3b;
+    --whatsapp: #25D366;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg-color);
+    color: var(--white);
+    font-family: var(--font-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+button, a {
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+}
+
+*, *::before, *::after {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.app {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+    background: var(--bg-color);
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.app.is-dragging {
+    cursor: grabbing;
+}
+
+.app a, .app button, .app video {
+    cursor: pointer;
+}
+
+/* Panel Layout & Spacing */
+.panel {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8vh 8vw 10vh;
+    background: var(--bg-color);
+    overflow: hidden;
+}
+
+.panel.active {
+    display: flex;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Home Panel Specifics */
+.home {
+    justify-content: center;
+}
+
+.pizza-image {
+    position: absolute;
+    width: min(65vw, 520px);
+    height: min(65vw, 520px);
+    right: -12vw;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-image: url("https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=85");
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    opacity: 0.9;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    box-shadow: 0 10px 20px rgba(230, 46, 46, 0.3);
+}
+
+.home-copy {
+    max-width: 540px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.kicker, .home-copy > p {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    font-size: clamp(38px, 7vw, 78px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    font-weight: 800;
+}
+
+/* Buttons Styling */
+.text-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 32px;
+    padding: 14px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    background: var(--surface-color);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-button span {
+    color: var(--red);
+    transition: transform 0.3s ease;
+}
+
+.text-button:hover {
+    background: var(--red);
+    border-color: var(--red);
+    transform: translateY(-2px);
+}
+
+.text-button:hover span {
+    color: var(--white);
+    transform: translate(3px, -3px);
+}
+
+.contact-actions, .about-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.action-button, .whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.action-button {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--white);
+}
+
+.action-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.whatsapp-button {
+    background: var(--whatsapp);
+    color: #000000;
+    border: 1px solid var(--whatsapp);
+}
+
+.whatsapp-button i {
+    font-size: 18px;
+}
+
+.whatsapp-button:hover {
+    background: #1ebc57;
+    transform: translateY(-2px);
+}
+
+/* Video Panel */
+.video-panel {
+    gap: 24px;
+}
+
+.video-wrapper {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.video-panel video {
+    display: block;
+    width: 100%;
+    max-height: 48vh;
+    object-fit: cover;
+}
+
+/* Contact Details */
+.details {
+    display: grid;
+    gap: 0;
+    max-width: 500px;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-label {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.detail-value {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* About Panel */
+.about-content {
+    max-width: 560px;
+}
+
+.story {
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.fictional {
+    margin-top: 16px;
+    color: var(--red);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Swipe Hint & Counter */
+.swipe-hint {
+    position: absolute;
+    left: 8vw;
+    bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    pointer-events: none;
+}
+
+.swipe-hint i {
+    color: var(--red);
+    animation: bounceDown 1.5s ease-in-out infinite;
+}
+
+.swipe-line {
+    width: 30px;
+    height: 1px;
+    background: var(--red);
+}
+
+@keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+}
+
+.counter {
+    position: absolute;
+    right: 8vw;
+    bottom: 36px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.counter i {
+    color: var(--red);
+    font-style: normal;
+}
+
+/* Slide Navigation Bar */
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.slide-nav button {
+    width: 6px;
+    height: 24px;
+    border: 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.slide-nav button.active {
+    background: var(--red);
+    height: 36px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    .panel {
+        padding-left: 12vw;
+        padding-right: 12vw;
+    }
+    .pizza-image {
+        right: 8vw;
+        width: min(45vw, 520px);
+        height: min(45vw, 520px);
+    }
+    .swipe-hint { left: 12vw; }
+    .counter { right: 12vw; }
+}
+
+@media (max-width: 480px) {
+    .panel {
+        padding: 6vh 6vw 8vh;
+    }
+    .pizza-image {
+        width: 100vw;
+        height: 100vw;
+        right: -30vw;
+        top: 32%;
+        opacity: 0.65;
+    }
+    h1, h2 {
+        font-size: 34px;
+        letter-spacing: -1.5px;
+    }
+    .text-button, .action-button, .whatsapp-button {
+        padding: 12px 20px;
+        font-size: 13px;
+        width: 100%;
+        justify-content: center;
+    }
+    .contact-actions, .about-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .slide-nav {
+        right: 12px;
+    }
+}
